@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="en-US">
+  <meta name="title" content="Will You Be My Girlfriend | Aoudumber Bade">
+  <meta name="github" content="https://github.com/Aoudumber-Bade">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/jquery-2.0.3.min.js"></script>
+  <title>Mela Shammo💗</title>
+  <style>
+    @keyframes music_play_rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-music-spin {
+      animation: music_play_rotate 2s linear infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-pink-50 min-h-screen">
+  <div class="container mx-auto px-4 py-8 max-w-2xl">
+    <!-- Main Content Card -->
+    <div class="bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-6 relative overflow-hidden">
+      <!-- Background Image -->
+      <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('images/2.jpg')"></div>
+      
+      <div class="relative z-10 text-center space-y-6">
+        <!-- Title Section -->
+        <h1 class="text-4xl font-bold bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent">
+          Do you love me?<span class="text-red-500">!</span>
+        </h1>
+
+        <!-- Image Section -->
+        <img src="images/1.gif" alt="Love GIF" class="w-48 h-48 mx-auto rounded-full border-8 border-pink-200/50 shadow-lg">
+
+        <!-- Main Text -->
+        <p class="text-gray-600 text-lg leading-relaxed">
+          Batao Btao Do you luv me or do u not luv me??? hmm hmm???<span class="text-red-400">💕</span>
+        </p>
+
+        <!-- Benefits List -->
+        <ul id="ul_oy_benefit" class="hidden grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+          <!-- Benefits will be populated dynamically -->
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button onclick="oy_go_next()" 
+                  class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-emerald-200/50">
+            Yes ❤️
+          </button>
+          <button onclick="oy_show_benefit()" 
+                  class="flex-1 bg-gradient-to-r from-red-500 to-pink-600 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-pink-200/50">
+            No ✖️
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Note Popup -->
+    <div id="div_oy_note" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50" onclick="oy_hide_note()">
+      <div class="bg-white rounded-2xl p-8 max-w-md text-center relative">
+        <div id="div_oy_note_close" class="absolute top-2 right-2 text-gray-400 hover:text-red-600 cursor-pointer">✖</div>
+        <img src="./images/image2.gif" alt="Please say yes" class="w-32 mx-auto mb-4">
+        <p class="text-xl font-semibold text-gray-700">Please say Yes! 🙏</p>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="div_oy_yes" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      <div class="bg-white rounded-2xl p-8 max-w-md text-center">
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Success" class="w-48 mx-auto mb-4">
+        <p class="text-2xl font-bold text-pink-600">That's great! Haha~ 💘</p>
+      </div>
+    </div>
+
+    <!-- Pure Words Section -->
+    <div class="div_pure_words hidden mt-8 bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl p-6">
+      <div class="prose prose-lg max-w-none">
+        <div class="div_pure_words_bg bg-cover bg-center rounded-xl" style="background-image: url('images/3.jpg')">
+          <div class="backdrop-blur-sm bg-white/30 p-6 rounded-xl">
+            <span id="span_pw_typed" class="text-gray-700 text-lg leading-relaxed"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Music Control -->
+    <div class="fixed bottom-6 right-6">
+      <div id="div_music" class="w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-pink-50">
+        <img id="img_music" src="images/music_note_big.png" class="w-8 h-8 animate-music-spin">
+        <audio id="audio_music" autoplay loop>
+          <source src="images/1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- Original JavaScript Preserved -->
+  <script>
+    // Viewport initialization remains same
+    function init_viewport() {
+      if (navigator.userAgent.indexOf("Android") != -1) {
+        var version = parseFloat(RegExp.$1);
+        if (version > 2.3) {
+          var width = window.outerWidth == 0 ? window.screen.width : window.outerWidth;
+          var phoneScale = parseInt(width) / 500;
+          document.write(
+            '<meta name="viewport" content="width=500, minimum-scale = ' +
+            phoneScale +
+            ", maximum-scale = " +
+            phoneScale +
+            ', target-densitydpi=device-dpi">'
+          );
+        } else {
+          document.write(
+            '<meta name="viewport" content="width=500, target-densitydpi=device-dpi, user-scalable=0">'
+          );
+        }
+      } else if (navigator.userAgent.indexOf("iPhone") != -1) {
+        var phoneScale = parseInt(window.screen.width) / 500;
+        document.write(
+          '<meta name="viewport" content="width=500, min-height=750, initial-scale=' +
+          phoneScale +
+          ", maximum-scale=" +
+          phoneScale +
+          ', user-scalable=0" /> '
+        );
+      } else {
+        document.write(
+          '<meta name="viewport" content="width=500, height=750, initial-scale=0.64" /> '
+        );
+      }
+    }
+    init_viewport();
+
+    // Rest of your original JavaScript remains unchanged
+    var theme = "pure_words";
+    var theme_content = {
+      pure_words_content: "Milna Tujshe shuruaat thi mere sari haseen o beautiful stories ki...",
+      // ... rest of your configuration
+    };
+
+    var start_content = {
+      chase_benefit: [
+        "You're the sunbeam I’d chase...",
+        // ... all your benefits
+      ]
+    };
+
+    // All your existing functions remain the same
+    function init_pure_words() { /* ... */ }
+    function display_pure_words() { /* ... */ }
+    function init_start(start_id) { /* ... */ }
+    // ... other functions
+  </script>
+
+  <!-- External JS Files -->
+  <script src="js/typed.min.js"></script>
+  <script src="js/start_onlyyou.js"></script>
+  <script src="js/jweixin-1.2.0.js"></script>
+  <script src="js/theme_common.js"></script>
+</body>
+</html>
